@@ -4,22 +4,8 @@
 #include <string>
 #include <cstring>
 
-enum jedi_rank  {YOUNGLING = 0, INITIAT = 1, PADAWAN = 2, KNIGHT_ASPIRANT = 3, KNIGHT = 4, MASTER = 5, BATTLE_MASTER = 6, GRAND_MASTER = 7};
-/*
-		switch (rank)
-	{
-	case YOUNGLING: os << "YOUNGLING";    break;
-	case INITIAT: os << "INITIAT"; break;
-	case PADAWAN: os << "PADAWAN";  break;
-	case KNIGHT_ASPIRANT: os << "KNIGHT_ASPIRANT";   break;
-	case KNIGHT: os << "KNIGHT";   break;
-	case MASTER: os << "MASTER";   break;
-	case BATTLE_MASTER: os << "BATTLE_MASTER";   break;
-	case GRAND_MASTER: os << "GRAND_MASTER";   break;
-	}
-	return os;
-}
-*/
+enum jedi_rank {YOUNGLING = 0, INITIAT = 1, PADAWAN = 2, KNIGHT_ASPIRANT = 3, KNIGHT = 4, MASTER = 5, BATTLE_MASTER = 6, GRAND_MASTER = 7};
+
 class Jedi {
 	std::string name;
 	jedi_rank rank;
@@ -28,27 +14,32 @@ class Jedi {
 	double strength;
 
 public:
-	// êîíñòðóêòîð ïî ïîäðàçáèðàíå
+	// ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð¿Ð¾ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð±Ð¸Ñ€Ð°Ð½Ðµ
 	Jedi();
-	// êîíñòðóêòîð çà ñúçäàâàíå íà äæåäàé
+	// ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð·Ð° ÑÑŠÐ·Ð´Ð°Ð²Ð°Ð½Ðµ Ð½Ð° Ð´Ð¶ÐµÐ´Ð°Ð¹
 	Jedi(std::string _name, jedi_rank _rank, int _age, std::string _saber_color, double _strength);
 
-	// ñåëåêòîð çà èìåòî íà äæåäàÿ
+	// ÑÐµÐ»ÐµÐºÑ‚Ð¾Ñ€ Ð·Ð° Ð¸Ð¼ÐµÑ‚Ð¾ Ð½Ð° Ð´Ð¶ÐµÐ´Ð°Ñ
 	std::string get_Name_of_jedi() const;
-	// ñåëåêòîð çà ðàíãà íà äæåäàÿ
-	jedi_rank get_Rank() const;
-	// ñåëåêòîð çà âúçðàñòòà íà äæåäàÿ
+	// ÑÐµÐ»ÐµÐºÑ‚Ð¾Ñ€ Ð·Ð° Ñ€Ð°Ð½Ð³Ð° Ð½Ð° Ð´Ð¶ÐµÐ´Ð°Ñ
+	jedi_rank get_Rank(std::ostream& os = std::cout) const;
+	// ÑÐµÐ»ÐµÐºÑ‚Ð¾Ñ€ Ð·Ð° Ð²ÑŠÐ·Ñ€Ð°ÑÑ‚Ñ‚Ð° Ð½Ð° Ð´Ð¶ÐµÐ´Ð°Ñ
 	int get_Age() const;
-	// ñåëåêòîð çà öâåòà íà ñâåòëèíèÿ íà äæåäàÿ
+	// ÑÐµÐ»ÐµÐºÑ‚Ð¾Ñ€ Ð·Ð° Ñ†Ð²ÐµÑ‚Ð° Ð½Ð° ÑÐ²ÐµÑ‚Ð»Ð¸Ð½Ð¸Ñ Ð½Ð° Ð´Ð¶ÐµÐ´Ð°Ñ
 	std::string get_Saber_color() const;
-	// ñåëåêòîð çà ñèëàòà íà äæåäàÿ
+	// ÑÐµÐ»ÐµÐºÑ‚Ð¾Ñ€ Ð·Ð° ÑÐ¸Ð»Ð°Ñ‚Ð° Ð½Ð° Ð´Ð¶ÐµÐ´Ð°Ñ
 	double get_Strength() const;
 
-	// ôóíêöèÿ çà èçâåæäàíå íà èíôîðìàöèÿòà íà äæåäàÿ
-	void print(std::ostream& os = std::cout) const;
-	// ôóíêöèÿ çà ïîâèøàâàíå íà ðàíãà
-	void rank_up(Jedi& j);
+	// Ð¼ÑƒÑ‚Ð°Ñ‚Ð¾Ñ€ Ð·Ð° ÑÐ¸Ð»Ð°Ñ‚Ð° Ð½Ð° Ð´Ð¶ÐµÐ´Ð°Ñ
+	void set_Strenth(double x);
 
+	// Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð·Ð° Ð¸Ð·Ð²ÐµÐ¶Ð´Ð°Ð½Ðµ Ð½Ð° Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑÑ‚Ð° Ð½Ð° Ð´Ð¶ÐµÐ´Ð°Ñ
+	void print(std::ostream& os = std::cout) const;
+	// Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð·Ð° Ð¿Ð¾Ð²Ð¸ÑˆÐ°Ð²Ð°Ð½Ðµ Ð½Ð° Ñ€Ð°Ð½Ð³Ð°
+	void rank_up(Jedi& j);
+	// Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð·Ð° Ð¿Ð¾Ð½Ð¸Ð¶Ð°Ð²Ð°Ð½Ðµ Ð½Ð° Ñ€Ð°Ð½Ð³Ð°
+	void rank_down(Jedi& j);
+	
 };	
-// îïåðàòîð çà èçâåæäàíå
+// Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€ Ð·Ð° Ð¸Ð·Ð²ÐµÐ¶Ð´Ð°Ð½Ðµ
 std::ostream& operator<<(std::ostream&, const Jedi&);
